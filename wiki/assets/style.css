@@ -289,10 +289,18 @@ main {
   color: var(--text-muted);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1rem;
+  align-items: center;
+  gap: 0.25rem 1rem;
   font-family: var(--font-mono);
 }
-.video-meta a { color: var(--text-dim); }
+.video-meta a {
+  color: var(--text-dim);
+  /* Touch target: 0.85rem * 1.55 line-height ≈ 21px to za mało — dodajemy padding pionowy */
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.35rem 0;
+}
 
 /* === FOOTER === */
 footer {
