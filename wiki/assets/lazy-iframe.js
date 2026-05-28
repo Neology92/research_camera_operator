@@ -11,7 +11,7 @@ document.addEventListener('click', (e) => {
   const iframe = document.createElement('iframe');
   iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
   iframe.title = frame.dataset.title || 'YouTube video';
-  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+  iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
   iframe.referrerPolicy = 'strict-origin-when-cross-origin';
   iframe.allowFullscreen = true;
   iframe.loading = 'lazy';

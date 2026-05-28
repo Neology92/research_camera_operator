@@ -31,7 +31,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+@media (min-width: 700px) { html { scroll-padding-top: 7rem; } }
 
 body {
   margin: 0;
@@ -83,7 +84,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
 .toc {
   max-width: 72rem;
   margin: 0 auto;
-  padding: 1.5rem clamp(1.25rem, 5vw, 4rem);
+  padding: 0.75rem clamp(1rem, 5vw, 4rem);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -97,18 +98,32 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
   padding: 0;
   margin: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.25rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  gap: 0.4rem;
+  /* Smooth side-scroll on iOS/Android */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
 }
+.toc ol::-webkit-scrollbar { height: 2px; }
+.toc ol::-webkit-scrollbar-thumb { background: var(--border-strong); }
+.toc li { scroll-snap-align: start; }
 .toc li a {
-  display: inline-block;
-  padding: 0.4rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   font-size: 0.85rem;
   color: var(--text-dim);
   white-space: nowrap;
   transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease), background var(--duration) var(--ease);
+}
+@media (min-width: 700px) {
+  .toc { padding: 1.25rem clamp(1.25rem, 5vw, 4rem); }
+  .toc ol { flex-wrap: wrap; overflow-x: visible; gap: 0.5rem 0.4rem; }
 }
 .toc li a:hover {
   color: var(--accent);

@@ -16,4 +16,6 @@
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    # Bez `immutable` i krótki TTL — nazwy plików nie są hashowane,
+    # poprawki muszą docierać do prowadzącego szybko.
+    Cache-Control = "public, max-age=3600, must-revalidate"
